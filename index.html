@@ -10,6 +10,7 @@
 	</script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
 	</script>
+	<link href="css/limberSpecific.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -20,9 +21,28 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4">
-				<h3>Login Page</h3>
-				<p>Username: <br/>Password: </p>
+			<div class="col">
+				<h3>Login Form</h3>
+
+				<form action="targetarea.html">
+					<div class="imgcontainer">
+						<img src="images/Whale.png" alt="Logo" width="70px"> <!--This is a placeholder!-->
+					</div>
+
+					<div class="container">
+						<label><b>Username</b></label><input type="text" placeholder="Enter Username" name="uname" required>
+
+						<label><b>Password</b></label><input type="text" placeholder="Enter Password" name="psw" required>
+
+						<button type="submit">Login</button>
+						<input type="checkbox" checked="checked"> Remember me
+					</div>
+
+					<div class="container" style="background-color:#f1f1f1">
+						<span class="psw">Forgot <a href="#">password?</a></span>
+					</div>
+
+				</form>
 			</div>
 		</div>
 	</div>
