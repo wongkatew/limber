@@ -22,6 +22,7 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
+  display: table-cell;
 }
 
 /* add a hover effect for buttons, from w3schools */
