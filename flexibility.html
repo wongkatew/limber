@@ -4,27 +4,32 @@
 	<title>limber</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-<script src="js/raphael.js"></script>
-	<link href="css/limberSpecific.css" rel="stylesheet"/>
-</head>
-<body>
-
-<script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script-->
+	<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script-->
+	<!--Ryan why did you import so many things? Several of these things are overwriting each other...-->
+	<script>
 		/* When the user clicks on the button,
 		toggle between hiding and showing the dropdown content */
-		function myFunction() {
-			document.getElementById("myDropdown").classList.toggle("show");
+		function fdropdown1() {
+			document.getElementById("myDropdown1").classList.toggle("show");
+		}
+		function fdropdown2() {
+			document.getElementById("myDropdown2").classList.toggle("show");
+		}
+		function fdropdown3() {
+			document.getElementById("myDropdown3").classList.toggle("show");
 		}
 
 		// Close the dropdown if the user clicks outside of it
 		window.onclick = function(event) {
 		  if (!event.target.matches('.w3-button')) {
 
-			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var dropdowns = document.getElementsByClass("dropdown-content");
 			var i;
 			for (i = 0; i < dropdowns.length; i++) {
 			  var openDropdown = dropdowns[i];
@@ -37,7 +42,7 @@
 
 		/* When the user clicks on the button,
 		toggle between hiding and showing the detail content */
-		function detailFunction() {
+		function detailFunction1() {
 			var vid = document.getElementById('vid1');
 			if (vid.style.display == "none")
 			{
@@ -48,9 +53,31 @@
 				vid.style.display = "none";
 			}
 		}
-
-		function goBack() {
-			window.history.back();
+		/* When the user clicks on the button,
+		toggle between hiding and showing the detail content */
+		function detailFunction2() {
+			var vid = document.getElementById('vid2');
+			if (vid.style.display == "none")
+			{
+				vid.style.display = "block";
+			}
+			else
+			{
+				vid.style.display = "none";
+			}
+		}
+		/* When the user clicks on the button,
+		toggle between hiding and showing the detail content */
+		function detailFunction3() {
+			var vid = document.getElementById('vid3');
+			if (vid.style.display == "none")
+			{
+				vid.style.display = "block";
+			}
+			else
+			{
+				vid.style.display = "none";
+			}
 		}
 	</script>
 	<link href="css/limberSpecific.css" rel="stylesheet"/>
@@ -85,8 +112,7 @@
 			position:relative;
 			padding-bottom:30%;
 		}
-
-		.vidclip
+		.gifsmall
 		{
 			position:absolute;
 			top:15%;
@@ -154,6 +180,27 @@
 </head>
 <body>
 
+<script>
+function goBack() {
+	window.history.back();
+}
+
+function appendList() {
+	var ul = document.getElementById("playlists");
+	var li = document.createElement("li");
+	li.appendChild(document.createTextNode("New Playlist"));
+	ul.appendChild(li);
+}
+$(function()
+{
+		$('.gifsmall').on('click',popup);		
+});
+function popup()
+{
+			$('.gifprev').attr('src', $(this).find('img').attr('src'));
+			$('#gifmodal').modal('show');   
+}
+</script>
 
 <!-- collapsible navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -177,6 +224,18 @@
 </nav>
 
 <body>
+<!-- section for defining modal tutorial at https://www.tutorialspoint.com/bootstrap/bootstrap_modal_plugin.htm something similar could be used for details function later-->
+<div class="modal fade" id="gifmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">              
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="gifprev" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
   <h1>FLEXIBILITY EXERCISES</h1>
   <div class="col-lg-3">
      <div class="panel panel-default panel-horizontal">
@@ -185,21 +244,24 @@
 				<div class="details">
 					With arms shoulder-width apart, bend arms at elbows until chest touches the ground, then push upwards to count for 1 rep.
 				</div>
-				<div class="vidclip">
-					<iframe id="vid1" width="100%" height="100%" src="https://www.youtube.com/embed/IODxDxX7oi4" frameborder="0" gesture="media" allowfullscreen></iframe>
-				</div>
+				<a href = "#" class="gifsmall">
+					<img src="images/prev2.gif" style = "width: 100%; height: 100%" id = "vid1">
+				</a>
         </div>
+		
 		<div class="panel-footer" style="background-color:#70db70;color:#fff; box-shadow:0 -12px 13px #e6ffe6 inset;">
 			<div class="detailtab">
-					<button onclick="detailFunction()" class="detailbtn">Details</button>
+					<button onclick="detailFunction1()" class="detailbtn">Details</button>
 			</div>
 			<div class="dropdown">
-					<button onclick="myFunction()" class="w3-button w3-large w3-circle w3-teal">+</button>
-						<div id="myDropdown" class="dropdown-content">
-							<a href="#">Playlist1</a>
-							<a href="#">Playlist2</a>
-							<a href="#">Playlist3</a>
-							<a href="#">Create New Playlist</a>
+					<button onclick="fdropdown1()" class="w3-button w3-large w3-circle w3-teal">+</button>
+						<div id="myDropdown1" class="dropdown-content">
+							<ul id="playlists" style="color:#000">
+								<li>Playlist 1</li>
+								<li>Playlist 2</li>
+								<li>Playlist 3</li>
+							</ul>
+							<a href="#" onclick="appendList()">Create New Playlist</a>
 						</div>
 			</div>
 
@@ -214,21 +276,23 @@
 				<div class="details">
 					With arms shoulder-width apart, bend arms at elbows until chest touches the ground, then push upwards to count for 1 rep.
 				</div>
-				<div class="vidclip">
-					<iframe id="vid1" width="100%" height="100%" src="https://www.youtube.com/embed/IODxDxX7oi4" frameborder="0" gesture="media" allowfullscreen></iframe>
-				</div>
+				<a href = "#" class="gifsmall">
+					<img src="images/prev3.gif" style = "width: 100%; height: 100%" id = "vid2">
+				</a>
         </div>
 		<div class="panel-footer" style="background-color:#70db70;color:#fff; box-shadow:0 -12px 13px #e6ffe6 inset;">
 			<div class="detailtab">
-					<button onclick="detailFunction()" class="detailbtn">Details</button>
+					<button onclick="detailFunction2()" class="detailbtn">Details</button>
 			</div>
 			<div class="dropdown">
-					<button onclick="myFunction()" class="w3-button w3-large w3-circle w3-teal">+</button>
-						<div id="myDropdown" class="dropdown-content">
-							<a href="#">Playlist1</a>
-							<a href="#">Playlist2</a>
-							<a href="#">Playlist3</a>
-							<a href="#">Create New Playlist</a>
+					<button onclick="fdropdown2()" class="w3-button w3-large w3-circle w3-teal">+</button>
+						<div id="myDropdown2" class="dropdown-content">
+							<ul id="playlists" style="color:#000">
+								<li>Playlist 1</li>
+								<li>Playlist 2</li>
+								<li>Playlist 3</li>
+							</ul>
+							<a href="#" onclick="appendList()">Create New Playlist</a>
 						</div>
 			</div>
 
@@ -243,27 +307,30 @@
 				<div class="details">
 					With arms shoulder-width apart, bend arms at elbows until chest touches the ground, then push upwards to count for 1 rep.
 				</div>
-				<div class="vidclip">
-					<iframe id="vid1" width="100%" height="100%" src="https://www.youtube.com/embed/IODxDxX7oi4" frameborder="0" gesture="media" allowfullscreen></iframe>
-				</div>
+				<a href = "#" class="gifsmall">
+					<img src="images/prev4.gif" style = "width: 100%; height: 100%" id = "vid3">
+				</a>
         </div>
 		<div class="panel-footer" style="background-color:#70db70;color:#fff; box-shadow:0 -12px 13px #e6ffe6 inset;">
 			<div class="detailtab">
-					<button onclick="detailFunction()" class="detailbtn">Details</button>
+					<button onclick="detailFunction3()" class="detailbtn">Details</button>
 			</div>
 			<div class="dropdown">
-					<button onclick="myFunction()" class="w3-button w3-large w3-circle w3-teal">+</button>
-						<div id="myDropdown" class="dropdown-content">
-							<a href="#">Playlist1</a>
-							<a href="#">Playlist2</a>
-							<a href="#">Playlist3</a>
-							<a href="#">Create New Playlist</a>
+					<button onclick="fdropdown3()" class="w3-button w3-large w3-circle w3-teal">+</button>
+						<div id="myDropdown3" class="dropdown-content">
+							<ul id="playlists" style="color:#000">
+								<li>Playlist 1</li>
+								<li>Playlist 2</li>
+								<li>Playlist 3</li>
+							</ul>
+							<a href="#" onclick="appendList()">Create New Playlist</a>
 						</div>
 			</div>
 
 		</div>
      </div>
 	</div>
+
 
 
 
