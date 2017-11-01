@@ -153,6 +153,13 @@
 function goBack() {
 	window.history.back();
 }
+
+function appendList() {
+	var ul = document.getElementById("playlists");
+	var li = document.createElement("li");
+	li.appendChild(document.createTextNode("New Playlist"));
+	ul.appendChild(li);
+}
 </script>
 
 <!-- collapsible navbar -->
@@ -196,10 +203,12 @@ function goBack() {
 			<div class="dropdown">
 					<button onclick="myFunction()" class="w3-button w3-large w3-circle w3-teal">+</button>
 						<div id="myDropdown" class="dropdown-content">
-							<a href="#">Playlist1</a>
-							<a href="#">Playlist2</a>
-							<a href="#">Playlist3</a>
-							<a href="#">Create New Playlist</a>
+							<ul id="playlists" style="color:#000">
+								<li>Playlist 1</li>
+								<li>Playlist 2</li>
+								<li>Playlist 3</li>
+							</ul>
+							<a href="#" onclick="appendList()">Create New Playlist</a>
 						</div>
 			</div>
 
@@ -225,10 +234,12 @@ function goBack() {
 			<div class="dropdown">
 					<button onclick="myFunction()" class="w3-button w3-large w3-circle w3-teal">+</button>
 						<div id="myDropdown" class="dropdown-content">
-							<a href="#">Playlist1</a>
-							<a href="#">Playlist2</a>
-							<a href="#">Playlist3</a>
-							<a href="#">Create New Playlist</a>
+							<ul id="playlists" style="color:#000">
+								<li>Playlist 1</li>
+								<li>Playlist 2</li>
+								<li>Playlist 3</li>
+							</ul>
+							<a href="#" onclick="appendList()">Create New Playlist</a>
 						</div>
 			</div>
 
@@ -254,10 +265,12 @@ function goBack() {
 			<div class="dropdown">
 					<button onclick="myFunction()" class="w3-button w3-large w3-circle w3-teal">+</button>
 						<div id="myDropdown" class="dropdown-content">
-							<a href="#">Playlist1</a>
-							<a href="#">Playlist2</a>
-							<a href="#">Playlist3</a>
-							<a href="#">Create New Playlist</a>
+							<ul id="playlists" style="color:#000">
+								<li>Playlist 1</li>
+								<li>Playlist 2</li>
+								<li>Playlist 3</li>
+							</ul>
+							<a href="#" onclick="appendList()">Create New Playlist</a>
 						</div>
 			</div>
 
