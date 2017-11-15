@@ -59,7 +59,7 @@
 			var indSet = arguments[0];
 			var preview = document.getElementById("prev" + indSet);//arguments[0].index);
 			var description = document.getElementById("description" + indSet);//arguments[0].index);
-			
+
 			// alert(arguments[0].index);
 			if (preview.style.display == "none")
 			{
@@ -84,7 +84,8 @@
 
 		//deletes item
 		function deleteVid() {
-			var indSet = historyVids.findIndex(x => x.title == arguments[0].title) ;
+			var indSet = arguments[0];
+			//var indSet = historyVids.findIndex(x => x.title == arguments[0].title) ;
 		//	var element1 = document.getElementById("element" + indexThis);
 			//element1.style.display = "none";
 			historyVids.splice(indSet,1);
@@ -110,6 +111,7 @@
 		<div class="navbar-nav mr-auto mt-2 mt-md-0">
 			<a class="nav-item nav-link" href="targetareaF.html">Pick Target Area</a>
 			<a class="nav-item nav-link" href="playlistAll.html">Exercise Sets</a>
+			<a class="nav-item nav-link" href="history.html">History</a>
 			<a class="nav-item nav-link" href="index.html">Log Out</a>
 		</div>
 	</div>
@@ -151,7 +153,7 @@
 								<button onclick="detailFunct({{@index}})" class="detailbtn">Details</button>
 							</div>
 							<div class="row"> <!--onclick="dropdownFunct({{json this}})"-->
-								<button onclick = "deleteVid({{json this}})" class = "btn btn-warning">Delete</button>
+								<button onclick = "deleteVid({{@index}})" class = "btn btn-warning">Delete</button>
 							</div>
 						</div>
 					</div>
