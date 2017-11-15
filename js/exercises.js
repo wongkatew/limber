@@ -759,7 +759,7 @@ var handsStrength = [
     "video": "images/clawHand.mp4",
     "prev": "images/genericHandPrev.png",
     "description": "Make a claw shape with your hand and hold to build finger strength and flexibility",
-    "index": 0
+    "index": 1
   }
 ]
 // head
