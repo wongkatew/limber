@@ -13,6 +13,7 @@
 	<link href="css/limberSpecific.css" rel="stylesheet"/>
 	<script>
 
+		var vidInd;
 		var setlists = localStorage.getItem("historyOfVids");
 		historyVids = JSON.parse(setlists);
 
@@ -25,7 +26,7 @@
 			var source = $("#entry-template").html();
 			var template = Handlebars.compile(source);
 			var html;
-			document.getElementById("setname").innerHTML += "History";
+			document.getElementById("setname").innerHTML += "Video History";
 
 			// var html = template(glutsPain);
 			html = template(historyVids);
@@ -84,7 +85,7 @@
 
 		//deletes item
 		function deleteVid() {
-			var indSet = arguments[0];
+			var indSet = vidInd;
 			//var indSet = historyVids.findIndex(x => x.title == arguments[0].title) ;
 		//	var element1 = document.getElementById("element" + indexThis);
 			//element1.style.display = "none";
@@ -92,9 +93,37 @@
 			localStorage.setItem("historyOfVids", JSON.stringify(historyVids));
 			location.reload();
 		};
+
+		function openModal() {
+			$('#conModal').modal('show');
+			vidInd = arguments[0];
+			//If the user clicks on "create" button, then call appendList
+			var createBtn = document.getElementById("deleteButton");
+			createBtn.addEventListener('click', deleteVid);
+		}
 	</script>
 </head>
 <body>
+<!-- delete modal confirm -->
+<div class="modal fade" id="conModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Exercise Video</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+	  <div class = "modal-body">
+		Would you like to remove this exercise video from your video history?
+	  </div>
+      <div class="modal-footer">
+		<button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+        <a href = "#" id = "deleteButton" class="btn btn-danger" role = "button" >Delete Exercise</a>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- collapsible navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<a href = "targetareaF.html">
@@ -110,8 +139,8 @@
 	<div class="collapse navbar-collapse" id="limberNavBar">
 		<div class="navbar-nav mr-auto mt-2 mt-md-0">
 			<a class="nav-item nav-link" href="targetareaF.html">Pick Target Area</a>
-			<a class="nav-item nav-link" href="playlistAll.html">Exercise Sets</a>
-			<a class="nav-item nav-link" href="history.html">History</a>
+			<a class="nav-item nav-link" href="playlistAll.html">My Exercise Sets</a>
+			<a class="nav-item nav-link active" href="history.html">Video History</a>
 			<a class="nav-item nav-link" href="index.html">Log Out</a>
 		</div>
 	</div>
@@ -141,7 +170,7 @@
 				{{#each this}}
 				<div class="row" style="padding: 5px;" id = "element{{index}}">
 					<div class="row">
-						<h3 style="font-size: 16px;">{{title}}</h3>
+						<h3 style="font-size: 20px; border-bottom-style: solid; margin-left: 3px;  width: 95vw;">{{title}}</h3>
 					</div>
 					<div class="row">
 						<div class="col">
@@ -153,7 +182,7 @@
 								<button onclick="detailFunct({{@index}})" class="detailbtn">Details</button>
 							</div>
 							<div class="row"> <!--onclick="dropdownFunct({{json this}})"-->
-								<button onclick = "deleteVid({{@index}})" class = "btn btn-warning">Delete</button>
+								<button onclick = "openModal({{@index}})" class = "btn btn-warning">Delete</button>
 							</div>
 						</div>
 					</div>
